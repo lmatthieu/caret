@@ -6,9 +6,8 @@ createTimeSlices <- function(y, initialWindow, horizon = 1, fixedWindow = TRUE, 
   ## fixedwindowlength = FALSE if we use the maximum possible length for the training set
   ## Ensure that initialwindowlength + horizonlength <= length(y)
   
-  windowStep = horizon;
-  print(paste("windowStep=", windowStep))
-  stops <- (seq(from=initialWindow, to=(length(y) - horizon), by=windowStep))
+  print(paste("windowStep=", horizon))
+  stops <- (seq(from=initialWindow, to=(length(y) - horizon), by=horizon))
   
   if (fixedWindow) {
     starts <- stops - initialWindow + 1
