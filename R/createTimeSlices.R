@@ -1,12 +1,14 @@
 ## From Tony Cooper <tonyc@iconz.co.nz> on 1/9/13
 
-createTimeSlices <- function(y, initialWindow, horizon = 1, fixedWindow = TRUE) {
+createTimeSlices <- function(y, initialWindow, horizon = 1, fixedWindow = TRUE, windowStep = 1) {
   ## initialwindowlength = initial number of consecutive values in each training set sample
   ## horizonlength = number of consecutive values in test set sample
   ## fixedwindowlength = FALSE if we use the maximum possible length for the training set
   ## Ensure that initialwindowlength + horizonlength <= length(y)
   
-  stops <- (seq(along = y))[initialWindow:(length(y) - horizon)]
+  windowStep = horizon;
+  print(paste("windowStep=", windowStep))
+  stops <- (seq(from=initialWindow, to=(length(y) - horizon), by=windowStep))
   
   if (fixedWindow) {
     starts <- stops - initialWindow + 1

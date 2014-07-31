@@ -105,6 +105,7 @@ train.default <- function(x, y,
                               adaptive_lgocv =, lgocv = createDataPartition(y, trControl$number, trControl$p),
                               timeslice = createTimeSlices(seq(along = y),
                                                            initialWindow = trControl$initialWindow,
+                                                           windowStep = trControl$windowStep,
                                                            horizon = trControl$horizon,
                                                            fixedWindow = trControl$fixedWindow)$train)
   }
